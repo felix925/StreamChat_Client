@@ -1,7 +1,6 @@
 package jp.making.streamchat
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -21,9 +20,5 @@ class ChatFragment : Fragment(R.layout.fragment_chat) {
             viewModel.sendMessage("ヤッホー！！！")
         }
         viewModel.receiveMessage.observe(viewLifecycleOwner) {}
-
-        viewModel.response.observe(viewLifecycleOwner) {
-            Log.d("res", "server was res: $it")
-        }
     }
 }

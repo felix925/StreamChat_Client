@@ -1,4 +1,4 @@
-package jp.making.streamchat
+package jp.making.streamchat.api
 
 import io.grpc.ManagedChannelBuilder
 import io.grpc.stub.StreamObserver
@@ -21,7 +21,7 @@ class ChatApi {
     ): StreamObserver<Chat.ChatRequest> {
         return stub.chat(object : StreamObserver<Chat.ChatResponse> {
             override fun onNext(message: Chat.ChatResponse) {
-                onNext(message.message)
+                message.message.let(onNext)
             }
 
             override fun onError(t: Throwable?) {
